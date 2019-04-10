@@ -1,0 +1,423 @@
+openapi: 3.0.0
+info:
+  title: Insight People managment API Docs
+  description: Insight People managment API Docs...
+  version: 1.0.0
+paths:
+  /user/{id}:
+    get:
+      summary: Returns a user.
+      description: Returns a user...
+      tags:
+        - User
+      parameters:
+        - name: id
+          in: path
+          description: id of the user.
+          schema:
+            type: string
+      responses:
+        "200": # status code
+          description: a user.
+          content:
+            application/json:
+              schema:
+                type: object
+        "400": # status code
+          description: Invalid id.
+          content:
+            application/json:
+              schema:
+                type: object
+        "404": # status code
+          description: Not found.
+          content:
+            application/json:
+              schema:
+                type: object
+    delete:
+      summary: Deletes a user.
+      description: Deletes a user...
+      tags:
+        - User
+      parameters:
+        - name: id
+          in: path
+          description: id of the user.
+          schema:
+            type: string
+      responses:
+        "200": # status code
+          description: A user.
+          content:
+            application/json:
+              schema:
+                type: object
+        "400": # status code
+          description: Invalid id.
+          content:
+            application/json:
+              schema:
+                type: object
+        "404": # status code
+          description: not found.
+          content:
+            application/json:
+              schema:
+                type: object
+    put:
+      summary: Updates a user.
+      description: Updates a user...
+      tags:
+        - User
+      parameters:
+        - name: id
+          in: path
+          description: id of the user.
+          schema:
+            type: string
+      responses:
+        "400": # status code
+          description: invalid id.
+          content:
+            application/json:
+              schema:
+                type: object
+        "200": # status code
+          description: A user.
+          content:
+            application/json:
+              schema:
+                type: object
+        "201": # status code
+          description: A user.
+          content:
+            application/json:
+              schema:
+                type: object
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                  format: email
+                role:
+                  type: string
+                wage: 
+                  type: string
+                phone:
+                  type: string
+                birthday: 
+                  type: string
+                  format: date
+                shifts:
+                  type: array 
+                  items:
+                    type: object
+                    properties:
+                      _id:
+                        type: string
+                      startTime:
+                        type: string
+                        format: date
+                      endTime:
+                        type: string
+                        format: date
+                      taskId:
+                        type: string
+                      area:
+                        type: string
+  /user:
+    post:
+      summary: Creates a user.
+      description: Creates a user...
+      tags:
+        - User
+      responses:
+        "201": # status code
+          description: A user.
+          content:
+            application/json:
+              schema:
+                type: object
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+                role:
+                  type: string
+                wage: 
+                  type: string
+                phone:
+                  type: string
+                birthday: 
+                  type: string
+                  format: date
+                shifts:
+                  type: array 
+                  items:
+                    type: object
+                    properties:
+                      _id:
+                        type: string
+                      startTime: 
+                        type: string
+                        format: date
+                      endTime: 
+                        type: string
+                        format: date
+                      taskId: 
+                        type: string
+                      area:
+                        type: string
+                    reuired: 
+                      - startTime
+                      - endTime
+                      - taskId                    
+              required:
+                - email
+                - password
+  /bulk/users/{ids}:
+    get:
+      summary: Returns users by ids.
+      description: Returns persons by ids...
+      tags:
+        - Bulk Users
+      parameters:
+        - name: ids
+          in: path
+          description: ids of the users. It should look like `5ca45de909520ac243514afa,5ca45de909520ac243514aff`
+          schema:
+            type: array
+              items:
+                type: string
+      responses:
+        "200": # status code
+          description: List of users.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+        "400": # status code
+          description: Invalid ids.
+          content:
+            application/json:
+              schema:
+                type: object
+        "404": # status code
+          description: all ids not found.
+          content:
+            application/json:
+              schema:
+                type: object  
+  /bulk/users:
+    get:
+      summary: Returns users list.
+      description: Returns persons by ids...
+      tags:
+        - Bulk Users
+      responses:
+        "200": # status code
+          description: List of users.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+        "404": # status code
+          description: no user found.
+          content:
+            application/json:
+              schema:
+                type: object  
+  /task/{id}:
+    get:
+      summary: Returns a task.
+      description: Returns a task...
+      tags:
+        - Task
+      parameters:
+        - name: id
+          in: path
+          description: id of the task.
+          schema:
+            type: string
+      responses:
+        "200": # status code
+          description: a task.
+          content:
+            application/json:
+              schema:
+                type: object
+        "400": # status code
+          description: Invalid id.
+          content:
+            application/json:
+              schema:
+                type: object
+        "404": # status code
+          description: not found.
+          content:
+            application/json:
+              schema:
+                type: object
+    delete:
+      summary: Deletes a task.
+      description: Deletes a task...
+      tags:
+        - Task
+      parameters:
+        - name: id
+          in: path
+          description: id of the task.
+          schema:
+            type: string
+      responses:
+        "200": # status code
+          description: A task.
+          content:
+            application/json:
+              schema:
+                type: object
+        "400": # status code
+          description: Invalid id.
+          content:
+            application/json:
+              schema:
+                type: object
+        "404": # status code
+          description: not found.
+          content:
+            application/json:
+              schema:
+                type: object
+    put:
+      summary: Updates a task.
+      description: Updates a task...
+      tags:
+        - Task
+      parameters:
+        - name: id
+          in: path
+          description: id of the task.
+          schema:
+            type: string
+      responses:
+        "400": # status code
+          description: invalid id.
+          content:
+            application/json:
+              schema:
+                type: object
+        "200": # status code
+          description: A task.
+          content:
+            application/json:
+              schema:
+                type: object
+        "201": # status code
+          description: A task.
+          content:
+            application/json:
+              schema:
+                type: object
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                postPerson:
+                  type: string
+                assignTo:
+                  type: array
+                dueDate: 
+                  type: string
+                  format: date
+              required:
+                - title
+                - postPerson
+  /task:
+    post:
+      summary: Creates a task.
+      description: Creates a task...
+      tags:
+        - Task
+      responses:
+        "201": # status code
+          description: A Task.
+          content:
+            application/json:
+              schema:
+                type: object
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                postPerson:
+                  type: string
+                assignTo:
+                  type: array 
+                    items:
+                      type: string 
+                dueDate: 
+                  type: string
+                  format: date  
+  /bulk/tasks/{ids}:
+    get:
+      summary: Returns tasks by ids.
+      description: Returns tasks by ids...
+      tags:
+        - Bulk tasks
+      parameters:
+        - name: ids
+          in: path
+          description: ids of the tasks. It should look like `5ca45de909520ac243514afa,5ca45de909520ac243514aff`
+          schema:
+            type: array
+              items:
+                type: string
+      responses:
+        "200": # status code
+          description: List of tasks.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+        "400": # status code
+          description: Invalid ids.
+          content:
+            application/json:
+              schema:
+                type: object
+        "404": # status code
+          description: all ids not found.
+          content:
+            application/json:
+              schema:
+                type: object 
