@@ -20,7 +20,7 @@ const UserSchema = new Schema({
   role: String,
   phone: String,
   wage: Number,
-  workinghourse: Number,
+  workinghours: Number,
   birthday: { type: Date, default: Date.now },
   shifts: [ShiftSchema]
 });
