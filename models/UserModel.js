@@ -3,8 +3,10 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
+// const ShiftSchema = require("./ShiftModel");
+
 const ShiftSchema = new Schema({
-  _id: mongoose.Types.ObjectId,
+  // _id: mongoose.Types.ObjectId,
   startTime: { type: Date, default: Date.now },
   endTime: { type: Date, default: Date.now },
   taskId: String,
@@ -17,7 +19,8 @@ const UserSchema = new Schema({
   password: String,
   role: String,
   phone: String,
-  wage: String,
+  wage: Number,
+  workinghourse: Number,
   birthday: { type: Date, default: Date.now },
   shifts: [ShiftSchema]
 });

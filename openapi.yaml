@@ -109,7 +109,9 @@ paths:
                 role:
                   type: string
                 wage: 
-                  type: string
+                  type: integer
+                workinghours:
+                  type: integer
                 phone:
                   type: string
                 birthday: 
@@ -161,7 +163,9 @@ paths:
                 role:
                   type: string
                 wage: 
-                  type: string
+                  type: integer
+                workinghours:
+                  type: integer
                 phone:
                   type: string
                 birthday: 
