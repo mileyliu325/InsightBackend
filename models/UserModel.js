@@ -5,6 +5,11 @@ const { Schema } = mongoose;
 
 // const ShiftSchema = require("./ShiftModel");
 
+const RoleSchema = new Schema({
+  name: String,
+  roleId: String
+})
+
 const ShiftSchema = new Schema({
   // _id: mongoose.Types.ObjectId,
   startTime: { type: Date, default: Date.now },
@@ -17,7 +22,7 @@ const UserSchema = new Schema({
   name: String,
   email: String,
   password: String,
-  role: String,
+  role: [RoleSchema],
   phone: String,
   wage: Number,
   workinghours: Number,
