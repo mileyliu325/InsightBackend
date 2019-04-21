@@ -107,7 +107,14 @@ paths:
                   type: string
                   format: email
                 role:
-                  type: string
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      roleId:
+                        type: string
                 wage: 
                   type: integer
                 workinghours:
@@ -188,7 +195,7 @@ paths:
                         type: string
                       area:
                         type: string
-                    reuired: 
+                    required: 
                       - startTime
                       - endTime
                       - taskId                    

@@ -14,7 +14,10 @@
         name: String,
         email: String ,
         password: String,
-        role: String,
+        role: {
+            name: String,
+            roleId: String
+        },
         wage: String,
         phone: String,
         birthday: Date,
@@ -37,7 +40,10 @@
     {
         name: String,
         email: String,
-        role: String, 
+        role: [{
+            name: String,
+            roleId: String
+        }],
         wage: String,
         phone: String,
         birthday:Date,
