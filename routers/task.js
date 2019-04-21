@@ -15,8 +15,11 @@ router.put("/task/:id", taskUpdate);
 router.delete("/task/:id", taskDelete);
 
 const tasksBulkGet = require("../controllers/task/bulk/get");
+const taskList = require("../controllers/task/bulk/getall");
 
 // bulk tasks restful apis
 router.get("/bulk/tasks/:ids", tasksBulkGet);
+
+router.get("/bulk/tasks", taskList);
 
 module.exports = router;

@@ -425,3 +425,24 @@ paths:
             application/json:
               schema:
                 type: object 
+  /bulk/tasks:
+    get:
+      summary: Returns task list.
+      description: Returns persons by ids...
+      tags:
+        - Bulk tasks
+      responses:
+        "200": # status code
+          description: List of tasks.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+        "404": # status code
+          description: no task found.
+          content:
+            application/json:
+              schema:
+                type: object  
